@@ -12,9 +12,14 @@ import androidx.fragment.app.Fragment;
 import com.example.androidme.R;
 import com.example.androidme.data.AndroidImageAssets;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BodyPartFragment extends Fragment {
+
+    public static final  String IMAGE_ID_LIST = "image_ids";
+    public static final String LIST_INDEX="list_index";
+
     //TAG for Logging
     private static final String TAG = "BodyPartFragment";
 
@@ -50,17 +55,45 @@ public class BodyPartFragment extends Fragment {
         // inflate the fragment layout
         View rootView = inflater.inflate(R.layout.fragment_body_part, container,false);
         // get the reference to imageView in the fragment layout
-        ImageView imageView=rootView.findViewById(R.id.body_part_image_view);
+        final ImageView imageView=rootView.findViewById(R.id.body_part_image_view);
+
+        if(savedInstanceState!=null)
+        {
+            mImageIds = savedInstanceState.getIntegerArrayList(IMAGE_ID_LIST);
+            mImageIndex = savedInstanceState.getInt(LIST_INDEX);
+        }
+
         // Set the image resource to display
-      //  imageView.setImageResource(AndroidImageAssets.getHeads().get(0));
         if(mImageIds!=null)
         {
             imageView.setImageResource(mImageIds.get(mImageIndex));
+            imageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(mImageIndex < mImageIds.size()-1)
+                    {
+                        mImageIndex++;
+                    }
+                    else
+                    {
+                        mImageIndex=0;
+                    }
+                    imageView.setImageResource(mImageIds.get(mImageIndex));
+                }
+            });
+
         }
         else {
             Log.v(TAG,"This fragment has null list of image ids");
         }
         //return the root view
         return rootView;
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle currentState)
+    {
+        currentState.putIntegerArrayList(IMAGE_ID_LIST, (ArrayList <Integer>) mImageIds);
+        currentState.putInt(LIST_INDEX,mImageIndex);
     }
 }
