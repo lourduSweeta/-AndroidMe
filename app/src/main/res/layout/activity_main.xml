@@ -9,7 +9,7 @@
     <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-<!--        Linear layout for holding three images -->
+        <!-- Linear layout for holding three images -->
         <LinearLayout android:layout_width="match_parent"
                       android:layout_height="wrap_content"
                       android:orientation="vertical"
@@ -18,14 +18,20 @@
                       android:paddingTop="16dp"
                       android:paddingLeft="16dp"
                       android:paddingRight="16dp">
-<!--           (4) : create a container to hold the head BodyPartFragment of the custom Android-->
+            <!-- (4) : create a container to hold the head BodyPartFragment of the custom Android-->
             <FrameLayout android:layout_width="match_parent"
                          android:layout_height="180dp"
                          android:id="@+id/head_container"
-            >
-
-            </FrameLayout>
-
+            />
+            <!-- (6) : create a container to hold the body BodyPartFragment of the custom Android-->
+            <FrameLayout android:layout_width="match_parent"
+                         android:layout_height="180dp"
+                         android:id="@+id/body_container"
+            />
+            <FrameLayout android:layout_width="match_parent"
+                         android:layout_height="180dp"
+                         android:id="@+id/leg_container"
+            />
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
