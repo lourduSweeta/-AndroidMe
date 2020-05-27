@@ -10,8 +10,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import com.example.androidme.R;
-import com.example.androidme.data.AndroidImageAssets;
-
 import java.util.ArrayList;
 import java.util.List;
 

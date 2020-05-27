@@ -21,12 +21,10 @@ public class MasterListAdapter extends BaseAdapter {
     {
         this.mContext = context;
         this.mImageIds = imageIds;
-        Log.v("MasterListAdapter"," constructor");
     }
 
     @Override
     public int getCount() {
-        Log.v("MasterListAdapter"," getCount() invocation ");
         return this.mImageIds.size();
     }
 
@@ -45,7 +43,6 @@ public class MasterListAdapter extends BaseAdapter {
      */
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        Log.v("MasterListAdapter","getView() invocation ");
         ImageView imageView;
         if(convertView == null)
         {
@@ -55,13 +52,11 @@ public class MasterListAdapter extends BaseAdapter {
             imageView.setAdjustViewBounds(true);
             imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
             imageView.setPadding(8,8,8,8);
-
         }
         else
         {
             imageView = (ImageView) convertView;
         }
-
         imageView.setImageResource(this.mImageIds.get(position));
         return imageView;
     }
