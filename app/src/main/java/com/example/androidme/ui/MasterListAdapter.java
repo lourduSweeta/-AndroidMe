@@ -1,9 +1,13 @@
 package com.example.androidme.ui;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
+
+import java.util.ArrayList;
 import java.util.List;
 
 // Custom adapter for displaying images in grid view
@@ -13,15 +17,17 @@ public class MasterListAdapter extends BaseAdapter {
     private Context mContext;
     private List<Integer> mImageIds;
 
-    public MasterListAdapter(Context context, List<Integer> imageids)
+    public MasterListAdapter(Context context, List<Integer> imageIds)
     {
-        context = mContext;
-        imageids = mImageIds;
+        this.mContext = context;
+        this.mImageIds = imageIds;
+        Log.v("MasterListAdapter"," constructor");
     }
 
     @Override
     public int getCount() {
-        return mImageIds.size();
+        Log.v("MasterListAdapter"," getCount() invocation ");
+        return this.mImageIds.size();
     }
 
     @Override
@@ -34,8 +40,29 @@ public class MasterListAdapter extends BaseAdapter {
         return 0;
     }
 
+    /**
+     * Creates new image view for each item referenced by the adapter
+     */
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        return null;
+        Log.v("MasterListAdapter","getView() invocation ");
+        ImageView imageView;
+        if(convertView == null)
+        {
+            // If the view is not recycled, this creates new ImageView to hold an image
+            imageView = new ImageView(mContext);
+            //Define the layout parameters
+            imageView.setAdjustViewBounds(true);
+            imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+            imageView.setPadding(8,8,8,8);
+
+        }
+        else
+        {
+            imageView = (ImageView) convertView;
+        }
+
+        imageView.setImageResource(this.mImageIds.get(position));
+        return imageView;
     }
 }

@@ -3,14 +3,13 @@ package com.example.androidme;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import com.example.androidme.data.AndroidImageAssets;
 import com.example.androidme.ui.BodyPartFragment;
 
 import java.util.List;
 
 // Display custom android imaged composed of three parts: head, body and legs
-public class MainActivity extends AppCompatActivity {
+public class AndroidMeActivity extends AppCompatActivity {
 
         private List<Integer> mImageIds ;
         private int mImageIndex;
@@ -24,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_android_me);
         if(savedInstanceState ==null)
         {
             //(5) Create a new BodyPartFragment instance and display it using the FragmentManager
