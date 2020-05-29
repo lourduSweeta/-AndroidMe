@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<GridView xmlns:android="http://schemas.android.com/apk/res/android"
-          android:layout_width="match_parent"
-          android:layout_height="match_parent"
+<LinearLayout android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical">
+<GridView android:layout_width="match_parent"
+          android:layout_height="0dp"
+          android:layout_weight="7"
           android:id="@+id/master_list_grid_view"
           android:columnWidth="180dp"
           android:numColumns="3"
@@ -10,7 +13,12 @@
           android:horizontalSpacing="8dp"
           android:verticalSpacing="8dp"
           android:padding="16dp"
-          android:stretchMode="columnWidth"
-          >
-
+          android:stretchMode="columnWidth">
 </GridView>
+    <Button android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:gravity="center_horizontal"
+            android:layout_weight="1"
+            android:text="@string/button_next"
+            android:id="@+id/next_button"/>
+</LinearLayout>

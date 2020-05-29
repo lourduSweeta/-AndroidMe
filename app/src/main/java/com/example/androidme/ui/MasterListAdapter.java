@@ -1,13 +1,11 @@
 package com.example.androidme.ui;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 // Custom adapter for displaying images in grid view
@@ -52,6 +50,7 @@ public class MasterListAdapter extends BaseAdapter {
             imageView.setAdjustViewBounds(true);
             imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
             imageView.setPadding(8,8,8,8);
+            imageView.setBackgroundColor(0xFF0000FF);
         }
         else
         {

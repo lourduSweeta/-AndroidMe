@@ -12,7 +12,6 @@ import java.util.List;
 public class AndroidMeActivity extends AppCompatActivity {
 
         private List<Integer> mImageIds ;
-        private int mImageIndex;
 
     // (1) Create a layout file that displays one body part image named fragment_body_part.xml
     // This layout should contain a single ImageView
@@ -24,20 +23,22 @@ public class AndroidMeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_android_me);
+        Bundle bundle = getIntent().getExtras();
+
         if(savedInstanceState ==null)
         {
             //(5) Create a new BodyPartFragment instance and display it using the FragmentManager
             BodyPartFragment headPartFragment = new BodyPartFragment();
             headPartFragment.setImageIds(AndroidImageAssets.getHeads());
-            headPartFragment.setImageIndex(0);
+            headPartFragment.setImageIndex(bundle.getInt("headIndex"));
 
             BodyPartFragment bodyPartFragment = new BodyPartFragment();
             bodyPartFragment.setImageIds(AndroidImageAssets.getBodies());
-            bodyPartFragment.setImageIndex(0);
+            bodyPartFragment.setImageIndex(bundle.getInt("bodyIndex"));
 
             BodyPartFragment legPartFragment = new BodyPartFragment();
             legPartFragment.setImageIds(AndroidImageAssets.getLegs());
-            legPartFragment.setImageIndex(0);
+            legPartFragment.setImageIndex(bundle.getInt("legIndex"));
 
             // Use fragment manager and transaction to add fragment to the screen
             FragmentManager fragmentManager = getSupportFragmentManager();
@@ -46,11 +47,6 @@ public class AndroidMeActivity extends AppCompatActivity {
                     .add(R.id.body_container,bodyPartFragment)
                     .add(R.id.leg_container,legPartFragment)
                     .commit();
-
         }
-
     }
-
-    
-
 }
